@@ -49,6 +49,28 @@ describe('Elevator Control', function() {
       newElevatorControl.sendToFloor(elevatorOne, 42);
       arrivalFloor = elevatorOne.currentFloor;
       expect(arrivalFloor).to.equal(42);
+    })''
+  });
+
+  describe('#calculateWaitTime', function() {
+    it('should exist as a function', function() {
+      expect(newElevatorControl.calculateWaitTime()).to.exist;
+    });
+
+    it('throws an error if two arguments are not received', function() {
+
+    });
+
+    it('throws an error if the first argument is not Elevator instance', function() {
+
     })
+
+    it('throws an error if the second argument is not a number', function() {
+      
+    })
+
+    it('should calculate wait time from call to pick up for an elevator', function() {
+
+    });
   })
-})
+});
