@@ -9,7 +9,7 @@ describe('Elevator', function() {
       newElevator.numberOfPassengers = 0;
     });
 
-  it('should be able to create new Elevator', function() {
+  it('can create a new Elevator', function() {
     assert.ok(newElevator);
   });
 
@@ -85,6 +85,10 @@ describe('Elevator', function() {
 
     it('throws an error if floor is not a number', function() {
       assert.throws(() => {newElevator.moveToFloor('1'), TypeError});
+    });
+
+    it('throws an error if the floor goes above 100', function() {
+      assert.throws(() => {newElevator.moveToFloor(200), Error});
     });
 
     it('updates elevator\'s current floor', function() {

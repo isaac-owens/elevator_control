@@ -32,6 +32,8 @@ class Elevator {
       throw new Error('moveToFloor takes one argument');
     } else if (typeof arguments[0] != 'number') {
       throw TypeError('moveToFloor expects Number as paramater');
+    } else if (floor > 100) {
+      throw new Error('floor cannot exceed 100');
     }
 
     this.currentFloor = floor;
