@@ -67,9 +67,21 @@ describe('Elevator', function() {
   })
 
   describe('#moveToFloor', function() {
+    // afterEach(function() {
+    //   newElevator.moveToFloor(1);
+    // })
+
     it('exists as a function', function() {
-      expect(newElevator.moveToFloor()).to.exist;
+      expect(newElevator.moveToFloor(1)).to.exist;
     });
+
+    it('throws an error unless given one argument', function() {
+      assert.throws(() => {newElevator.moveToFloor()}, Error);
+    })
+
+    it('throws an error if floor is not a number', function() {
+      assert.throws(() => {newElevator.moveToFloor('1'), Error});
+    })
   })
 })
 

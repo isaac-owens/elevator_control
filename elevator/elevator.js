@@ -28,6 +28,12 @@ class Elevator {
   }
 
   moveToFloor(floor) {
+    if (arguments.length != 1) {
+      throw new Error('moveToFloor takes one argument');
+    } else if (typeof arguments[0] != 'number') {
+      throw TypeError('moveToFloor expects Number as paramater');
+    }
+
     return true;
   }
 }
