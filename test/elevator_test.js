@@ -18,7 +18,11 @@ describe('Elevator', function() {
 
     it('can set the number of passengers', function() {
       newElevator.passengers = 5;
-      assert.equal(newElevator.passenger, 2);
+      assert.equal(newElevator.passengers, 5);
+    }),
+
+    it('thows an error if passengers exceeds 10', function() {
+      assert.throws(() => { newElevator.passengers += 20 }, Error)
     })
   })
 })
