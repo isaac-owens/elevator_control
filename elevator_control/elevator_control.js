@@ -30,6 +30,10 @@ class ElevatorControl {
     const waitTime = Math.abs(currentFloor - destinationFloor) + doorOpeningTime;
     return waitTime;
   }
+
+  calculateTimeInside() {
+    return true;
+  }
 }
 
 module.exports = ElevatorControl;
