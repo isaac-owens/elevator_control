@@ -24,7 +24,7 @@ class Elevator {
   }
 
   hasRoom() {
-    return true;
+    return this.numberOfPassengers < 10;
   }
 }
   

@@ -39,21 +39,30 @@ describe('Elevator', function() {
   describe('#isEmpty', function() {
     it('exists as a function', function() {
       expect(newElevator.isEmpty()).to.exist;
-    }),
+    });
 
     it('returns true if elevator is empty', function() {
       expect(newElevator.isEmpty()).to.equal(true);
-    })
+    });
 
     it('returns false if elevator is occupied', function() {
       newElevator.passengers += 5;
       expect(newElevator.isEmpty()).to.equal(false);
-    })
+    });
   })
 
   describe('#hasRoom', function() {
     it('exists as a function', function() {
       expect(newElevator.hasRoom()).to.exist;
+    });
+
+    it('returns true if there are less than 10 passengers', function() {
+      expect(newElevator.hasRoom()).to.equal(true);
+    })
+
+    it('returns false if elevator is at capacity', function() {
+      newElevator.passengers += 10;
+      expect(newElevator.hasRoom()).to.equal(false);
     })
   })
 })
