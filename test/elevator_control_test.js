@@ -20,4 +20,10 @@ describe('Elevator Control', function() {
   it('should initialize timeSpentInside to zero', function() {
     expect(newElevatorControl.timeSpentInside).to.equal(0);
   })
+
+  describe('#sendToFloor', function() {
+    it('exists as a function', function() {
+      expect(newElevatorControl.sendToFloor()).to.exist;
+    })
+  })
 })
