@@ -3,10 +3,11 @@ const expect = require('chai').expect;
 
 const Elevator = require('../elevator/elevator');
 const newElevator = new Elevator();
+const {clearElevator} = require('../elevator/elevator_utils');
 
 describe('Elevator', function() {
   afterEach(function() {
-      newElevator.numberOfPassengers = 0;
+      clearElevator(newElevator);
     });
 
   it('can create a new Elevator', function() {

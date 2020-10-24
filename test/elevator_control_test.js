@@ -10,7 +10,7 @@ const elevatorTwo = new Elevator();
 const elevatorThree = new Elevator();
 
 describe('Elevator Control', function() {
-  afterEach(() => {
+  afterEach(function() {
     clearElevator(elevatorOne);
     clearElevator(elevatorTwo);
     clearElevator(elevatorThree);
