@@ -4,9 +4,9 @@ const ElevatorControl = require('../elevator_control/elevator_control');
 const Elevator = require('../elevator/elevator');
 
 const newElevatorControl = new ElevatorControl();
-const ElevatorOne = new Elevator();
-const ElevatorTwo = new Elevator();
-const ElevatorThree = new Elevator();
+const elevatorOne = new Elevator();
+const elevatorTwo = new Elevator();
+const elevatorThree = new Elevator();
 
 describe('Elevator Control', function() {
   it('can create a new ElevatorControl', function() {
@@ -23,7 +23,25 @@ describe('Elevator Control', function() {
 
   describe('#sendToFloor', function() {
     it('exists as a function', function() {
-      expect(newElevatorControl.sendToFloor()).to.exist;
+      expect(newElevatorControl.sendToFloor(elevatorOne, 42)).to.exist;
+    });
+
+    it('throws an error if two arguments are not recieved', function() {
+      assert.throws(() => {newElevatorControl.sendToFloor()}, Error);
+    });
+
+    it('throws error if first argument not Elevator instance', function() {
+      assert.throws(() => {newElevatorControl.sendToFloor('elevatorOne', 42)}, TypeError);
+    })
+
+    it('throws error if second argument not Number', function() {
+      assert.throws(() => {newElevatorControl.sendToFloor(elevatorOne, '42')}, TypeError);
+    });
+
+    it('moves given elevator to given floor', function() {
+      newElevatorControl.sendToFloor(elevatorOne, 42);
+      arrivalFloor = elevatorOne.currentFloor;
+      expect(arrivalFloor).to.equal(42);
     })
   })
 })
