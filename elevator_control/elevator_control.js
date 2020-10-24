@@ -1,4 +1,5 @@
 const Elevator = require('../elevator/elevator');
+const {validateArguments} = require('./elevator_control_utils');
 
 class ElevatorControl {
   constructor() {
@@ -9,13 +10,25 @@ class ElevatorControl {
   sendToFloor(elevator, floor) {
     if(arguments.length != 2) {
       throw new Error('Must be called with two arguments');
-    } else if (arguments[0] instanceof Elevator != true) {
-      throw TypeError('First argument must be Elevator instance');
-    } else if (typeof arguments[1] === 'number' != true) {
-      throw TypeError('Second argument must be a number');
-    } 
+    };
+    validateArguments(elevator, floor);
+
     elevator.currentFloor = floor;
     return floor;
+  }
+
+  calculateWaitTime(elevator, destinationFloor) {
+    if(arguments.length != 2) {
+      throw new Error('Must be called with two arguments');
+    }
+    validateArguments(elevator, destinationFloor);
+
+    const currentFloor = elevator.currentFloor;
+    // If the elevator is on the lobby floor the door takes 30 seconds to open otherwise 5
+    const doorOpeningTime = currentFloor === 0 ? 30 : 5;
+    // The time it takes for the elevator to arrive to the call and open the doors
+    const waitTime = Math.abs(currentFloor - destinationFloor) + doorOpeningTime;
+    return waitTime;
   }
 }
 
