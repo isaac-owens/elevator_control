@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/isaac-owens/elevator_control/issues"
   },
-  "homepage": "https://github.com/isaac-owens/elevator_control#readme"
+  "homepage": "https://github.com/isaac-owens/elevator_control#readme",
+  "dependencies": {
+    "mocha": "^8.2.0"
+  }
 }
