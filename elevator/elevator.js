@@ -16,13 +16,18 @@ class Elevator {
       throw new Error('Elevator limit exceeded!');
     }
     
-    this.numberOfPassengers += numPassengers;
+    this.numberOfPassengers = numPassengers;
   } 
 
   isEmpty() {
-    return true;
+    return this.numberOfPassengers === 0;
+    // return(`Num Passengers: ${this.numberOfPassengers}`);
   }
 }
 
+newElevator = new Elevator();
+newElevator.passengers = 5;
+newElevator.passengers = 0;
+console.log(`Passengers: ${newElevator.passengers}`);
   
 module.exports = Elevator;
