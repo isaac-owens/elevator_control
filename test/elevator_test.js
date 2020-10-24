@@ -58,12 +58,18 @@ describe('Elevator', function() {
 
     it('returns true if there are less than 10 passengers', function() {
       expect(newElevator.hasRoom()).to.equal(true);
-    })
+    });
 
     it('returns false if elevator is at capacity', function() {
       newElevator.passengers += 10;
       expect(newElevator.hasRoom()).to.equal(false);
-    })
+    });
+  })
+
+  describe('#moveToFloor', function() {
+    it('exists as a function', function() {
+      expect(newElevator.moveToFloor()).to.exist;
+    });
   })
 })
 

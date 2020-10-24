@@ -26,6 +26,10 @@ class Elevator {
   hasRoom() {
     return this.numberOfPassengers < 10;
   }
+
+  moveToFloor(floor) {
+    return true;
+  }
 }
   
 module.exports = Elevator;
