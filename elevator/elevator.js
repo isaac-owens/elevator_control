@@ -21,13 +21,11 @@ class Elevator {
 
   isEmpty() {
     return this.numberOfPassengers === 0;
-    // return(`Num Passengers: ${this.numberOfPassengers}`);
+  }
+
+  hasRoom() {
+    return true;
   }
 }
-
-newElevator = new Elevator();
-newElevator.passengers = 5;
-newElevator.passengers = 0;
-console.log(`Passengers: ${newElevator.passengers}`);
   
 module.exports = Elevator;

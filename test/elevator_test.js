@@ -5,20 +5,23 @@ const Elevator = require('../elevator/elevator');
 const newElevator = new Elevator();
 
 describe('Elevator', function() {
+  afterEach(function() {
+      newElevator.passengers = 0;
+    });
 
   it('should be able to create new Elevator', function() {
     assert.ok(newElevator);
   });
 
+  it('should start on the Lobby floor (0)', function() {
+    expect(newElevator.currentFloor).to.equal(0);
+  });
+  
+  it('should start with no passengers', function() {
+    assert.equal(newElevator.passengers, 0);
+  });
+
   describe('#passengers', function () {
-    // afterEach(function() {
-    //   newElevator.passengers = 0;
-    // });
-
-    it('initializes with no passengers', function() {
-      assert.equal(newElevator.passengers, 0);
-    });
-
     it('can get the number of passengers', function() {
       assert.equal(newElevator.passengers, 0);
     });
@@ -31,10 +34,6 @@ describe('Elevator', function() {
     it('thows an error if passengers exceeds 10', function() {
       assert.throws(() => { newElevator.passengers += 20 }, Error)
     });
-
-    afterEach(function() {
-      newElevator.passengers = 0;
-    });
   })
 
   describe('#isEmpty', function() {
@@ -44,6 +43,17 @@ describe('Elevator', function() {
 
     it('returns true if elevator is empty', function() {
       expect(newElevator.isEmpty()).to.equal(true);
+    })
+
+    it('returns false if elevator is occupied', function() {
+      newElevator.passengers += 5;
+      expect(newElevator.isEmpty()).to.equal(false);
+    })
+  })
+
+  describe('#hasRoom', function() {
+    it('exists as a function', function() {
+      expect(newElevator.hasRoom()).to.exist;
     })
   })
 })
