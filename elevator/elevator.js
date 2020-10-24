@@ -6,18 +6,18 @@ class Elevator {
     this.currentFloor = 0;
   }
 
-  get passengers() {
-    return this.numberOfPassengers;
-  }
-
-  set passengers(numPassengers) {
+  loadPassengers(numPassengers) {
+    if (typeof arguments[0] != 'number') {
+      throw TypeError('passengers must be set to a number');
+    }
     // Ensure that the passenger limit is not exceeded
-    if (this.numberOfPassengers + numPassengers > 10) {
+     else if (this.numberOfPassengers + numPassengers > 10) {
       throw new Error('Elevator limit exceeded!');
     }
     
-    this.numberOfPassengers = numPassengers;
-  } 
+    this.numberOfPassengers += numPassengers;
+    return this.numberOfPassengers;
+  }
 
   isEmpty() {
     return this.numberOfPassengers === 0;
@@ -34,7 +34,8 @@ class Elevator {
       throw TypeError('moveToFloor expects Number as paramater');
     }
 
-    return true;
+    this.currentFloor = floor;
+    return this.currentFloor;
   }
 }
   

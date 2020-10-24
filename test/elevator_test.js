@@ -6,7 +6,7 @@ const newElevator = new Elevator();
 
 describe('Elevator', function() {
   afterEach(function() {
-      newElevator.passengers = 0;
+      newElevator.numberOfPassengers = 0;
     });
 
   it('should be able to create new Elevator', function() {
@@ -18,21 +18,25 @@ describe('Elevator', function() {
   });
   
   it('should start with no passengers', function() {
-    assert.equal(newElevator.passengers, 0);
+    expect(newElevator.numberOfPassengers).to.equal(0);
   });
 
-  describe('#passengers', function () {
-    it('can get the number of passengers', function() {
-      assert.equal(newElevator.passengers, 0);
+  describe('#loadPassengers', function () {
+    it('exists as a function', function() {
+      expect(newElevator.loadPassengers(1)).to.exist;
     });
 
-    it('can set the number of passengers', function() {
-      newElevator.passengers += 5;
-      assert.equal(newElevator.passengers, 5);
+    it('throws an error if argument is not a number', function() {
+      assert.throws(() => {newElevator.loadPassengers('1')}, TypeError)
     });
-
+    
     it('thows an error if passengers exceeds 10', function() {
-      assert.throws(() => { newElevator.passengers += 20 }, Error)
+      assert.throws(() => { newElevator.loadPassengers(20) }, Error)
+    });
+
+    it('updates number of passengers', function() {
+      newElevator.loadPassengers(5);
+      assert.equal(newElevator.numberOfPassengers, 5);
     });
   })
 
@@ -46,7 +50,7 @@ describe('Elevator', function() {
     });
 
     it('returns false if elevator is occupied', function() {
-      newElevator.passengers += 5;
+      newElevator.loadPassengers(5);
       expect(newElevator.isEmpty()).to.equal(false);
     });
   })
@@ -61,15 +65,15 @@ describe('Elevator', function() {
     });
 
     it('returns false if elevator is at capacity', function() {
-      newElevator.passengers += 10;
+      newElevator.loadPassengers(10);
       expect(newElevator.hasRoom()).to.equal(false);
     });
   })
 
   describe('#moveToFloor', function() {
-    // afterEach(function() {
-    //   newElevator.moveToFloor(1);
-    // })
+    afterEach(function() {
+      newElevator.currentFloor = 0;
+    });
 
     it('exists as a function', function() {
       expect(newElevator.moveToFloor(1)).to.exist;
@@ -77,10 +81,15 @@ describe('Elevator', function() {
 
     it('throws an error unless given one argument', function() {
       assert.throws(() => {newElevator.moveToFloor()}, Error);
-    })
+    });
 
     it('throws an error if floor is not a number', function() {
-      assert.throws(() => {newElevator.moveToFloor('1'), Error});
+      assert.throws(() => {newElevator.moveToFloor('1'), TypeError});
+    });
+
+    it('updates elevator\'s current floor', function() {
+      newElevator.moveToFloor(3);
+      expect(newElevator.currentFloor).to.equal(3);
     })
   })
 })
