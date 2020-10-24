@@ -2,6 +2,7 @@ const assert = require('assert');
 const expect = require('chai').expect;
 const ElevatorControl = require('../elevator_control/elevator_control');
 const Elevator = require('../elevator/elevator');
+const {clearElevator} = require('../elevator/elevator_utils');
 
 const newElevatorControl = new ElevatorControl();
 const elevatorOne = new Elevator();
@@ -9,6 +10,12 @@ const elevatorTwo = new Elevator();
 const elevatorThree = new Elevator();
 
 describe('Elevator Control', function() {
+  afterEach(() => {
+    clearElevator(elevatorOne);
+    clearElevator(elevatorTwo);
+    clearElevator(elevatorThree);
+  });
+
   it('can create a new ElevatorControl', function() {
     assert.ok(newElevatorControl);
   });
