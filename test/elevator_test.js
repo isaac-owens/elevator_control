@@ -1,4 +1,6 @@
 const assert = require('assert');
+const expect = require('chai').expect;
+
 const Elevator = require('../elevator/elevator');
 
 const newElevator = new Elevator();
@@ -23,6 +25,12 @@ describe('Elevator', function() {
 
     it('thows an error if passengers exceeds 10', function() {
       assert.throws(() => { newElevator.passengers += 20 }, Error)
+    })
+  })
+
+  describe('#isEmpty', function() {
+    it('exists as a function', function() {
+      expect(newElevator.isEmpty()).to.exist;
     })
   })
 })

@@ -11,14 +11,18 @@ class Elevator {
   }
 
   set passengers(numPassengers) {
-      // Ensure that the passenger limit is not exceeded
-      if (this.numberOfPassengers + numPassengers > 10) {
-        throw new Error('Elevator limit exceeded!');
-      }
-      
-      this.numberOfPassengers += numPassengers;
-    } 
+    // Ensure that the passenger limit is not exceeded
+    if (this.numberOfPassengers + numPassengers > 10) {
+      throw new Error('Elevator limit exceeded!');
+    }
+    
+    this.numberOfPassengers += numPassengers;
+  } 
+
+  isEmpty() {
+    return true;
   }
+}
 
   
 module.exports = Elevator;
