@@ -1,9 +1,9 @@
 const assert = require('assert');
 const expect = require('chai').expect;
-const ElevatorControl = require('../elevator_control/elevator_control');
-const Elevator = require('../elevator/elevator');
-const {clearElevator} = require('../elevator/elevator_utils');
-const {clearElevatorControl} = require('../elevator_control/elevator_control_utils');
+const ElevatorControl = require('../src/scripts/elevator_control/elevator_control');
+const Elevator = require('../src/scripts/elevator/elevator');
+const {clearElevator} = require('../src/scripts/elevator/elevator_utils');
+const {clearElevatorControl} = require('../src/scripts/elevator_control/elevator_control_utils');
 
 const newElevatorControl = new ElevatorControl();
 const elevatorOne = new Elevator('One');

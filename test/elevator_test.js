@@ -1,9 +1,9 @@
 const assert = require('assert');
 const expect = require('chai').expect;
 
-const Elevator = require('../elevator/elevator');
+const Elevator = require('../src/scripts/elevator/elevator');
 const newElevator = new Elevator('One');
-const {clearElevator} = require('../elevator/elevator_utils');
+const {clearElevator} = require('../src/scripts/elevator/elevator_utils');
 
 describe('Elevator', function() {
   afterEach(function() {
