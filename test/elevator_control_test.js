@@ -8,7 +8,26 @@ const newElevatorControl = new ElevatorControl();
 const elevatorOne = new Elevator();
 const elevatorTwo = new Elevator();
 const elevatorThree = new Elevator();
-const timeSeries = {'call0': {}, 'call1': {}, 'call2': {}};
+const timeSeries = {
+  'call0': {
+    'time': 0,
+    'numPassengers': 2,
+    'floor': 10,
+    'destination': 42
+  }, 
+  'call1': {
+    'time': 1,
+    'numPassengers': 1,
+    'floor': 69,
+    'destination': 1
+  }, 
+  'call2': {
+    'time': 2,
+    'numPassengers': 4,
+    'floor': 1,
+    'destination': 100
+  }
+};
 
 describe('Elevator Control', function() {
   afterEach(function() {
@@ -102,12 +121,16 @@ describe('Elevator Control', function() {
   })
 
   describe('#dispatchElevator', function() {
-    it('should exist as a function', function() {
+    it('exists as a function', function() {
       expect(newElevatorControl.dispatchElevator(timeSeries['call1'])).to.exist;
     });
 
-    it('should take an object as an argument', function() {
+    it('takes an object as an argument', function() {
       assert.throws(() => {newElevatorControl.dispatchElevator()}, TypeError);
+    });
+
+    it('calls the closest elevator to the call floor', function() {
+
     })
   })
 });

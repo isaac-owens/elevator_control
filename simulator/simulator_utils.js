@@ -24,7 +24,7 @@ module.exports = {
     for (let i = 0; i < numberOfCalls; i++) {
       const call = {};
       let time;
-      call['time'] = Math.floor(Math.random() * );
+      call['time'] = i;
       call['numPassengers'] = module.exports.generateNumPassengers();
       call['floor'] = module.exports.generateFloorCall();
       call['destination'] = module.exports.generateFloorCall();
