@@ -5,17 +5,24 @@ class Simulator {
   run() {
     const elevators = generateElevators();
     const elevatorControl = generateElevatorControl();
-    const timeSeries = generateTimeSeries();
+    const numberOfCalls = Math.floor(Math.random() * (10 - 1) + 10);
+    const timeSeries = generateTimeSeries(numberOfCalls);
+    console.log(timeSeries);
 
+    let call;
     for (call in timeSeries) {
-      const closestElevator = elevatorControl.dispatchElevator(call, elevators);
-      elevatorControl.calculateWaitTime(closestElevator, call.floor);
-      elevatorControl.calculateTimeInside(closestElevator, call.floor);
-      elevatorControl.sendToFloor(closestElevator, call.floor)
-      // closestElevator.moveToFloor(call.floor);
+      const currentCall = timeSeries[call];
+      const closestElevator = elevatorControl.dispatchElevator(currentCall, elevators);
+      elevatorControl.calculateWaitTime(closestElevator, currentCall.floor);
+      elevatorControl.calculateTimeInside(closestElevator, currentCall.floor);
+      elevatorControl.sendToFloor(closestElevator, currentCall.floor);
+      console.log(`Elevator ${JSON.stringify(closestElevator)} picked up on floor ${currentCall.floor}`);
     }
     return 'Run Complete! Printing summary...';
   }
 }
+
+const simulator = new Simulator();
+console.log(simulator.run());
 
 module.exports = Simulator;
