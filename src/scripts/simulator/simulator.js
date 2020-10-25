@@ -23,15 +23,23 @@ class Simulator {
     let call;
     for (call in timeSeries) {
       const currentCall = timeSeries[call];
+
+      // Determine which elevator is the best to complete the pickup
       const closestElevator = elevatorControl.dispatchElevator(currentCall, elevators);
+
+      // Calculate the time data for the pickup
       elevatorControl.calculateWaitTime(closestElevator, currentCall.floor);
-      elevatorControl.calculateTimeInside(closestElevator, currentCall.floor);
+      elevatorControl.calculateTimeInside(closestElevator, currentCall.destination);
       elevatorControl.sendToFloor(closestElevator, currentCall.floor);
+      elevatorControl.sendToFloor(closestElevator, currentCall.destination);
+
+      // Vanilla js to render the info to index.html
       const elevatorLog = document.getElementById('elevator-log')
       const li = document.createElement("li");
       const liContent = document.createTextNode(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`)
       li.appendChild(liContent);
       elevatorLog.appendChild(li);
+
       console.log(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`);
     }
     console.log('Run Complete! Printing summary...');
