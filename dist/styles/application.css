@@ -1,4 +1,32 @@
 body { 
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1;
+  text-align: center;
+  touch-action: manipulation;
+  transition-duration: 33ms;
+  transition-property: 
+    background-color,
+    border-color,
+    color,
+    box-shadow,
+    filter;
+  transition-duration: .3s;
+  user-select: none;
+  vertical-align: middle;
+  background-color: #3b5998;
+  color: white;
+  border-radius: 500px;
+  padding: 17px 48px;
+  margin: 0 auto;
+  margin-bottom: 18px;
 }
