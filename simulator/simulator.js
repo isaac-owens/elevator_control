@@ -19,7 +19,16 @@ class Simulator {
   }
 
   run() {
-    
+    const elevators = this.generateElevators();
+    const elevatorControl = this.generateElevatorControl();
+    const timeSeries = generateTimeSeries();
+
+    for (call in timeSeries) {
+      const closestElevator = elevatorControl.dispatchElevator(call, elevators);
+      elevatorControl.calculateWaitTime(closestElevator, call.floor);
+      elevatorControl.calculateTimeInside(closestElevator, call.floor);
+      closestElevator.moveToFloor(call.floor);
+    }
   }
 }
 

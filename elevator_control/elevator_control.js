@@ -25,7 +25,7 @@ class ElevatorControl {
 
     const currentFloor = elevator.currentFloor;
     // If the elevator is on the lobby floor the door takes 30 seconds to open otherwise 5
-    const doorOpeningTime = currentFloor === 0 ? 30 : 5;
+    const doorOpeningTime = currentFloor === 1 ? 30 : 5;
     // The time it takes for the elevator to arrive to the call and open the doors
     const waitTime = Math.abs(currentFloor - destinationFloor) + doorOpeningTime;
     this.timeSpentWaiting += waitTime;
@@ -40,9 +40,9 @@ class ElevatorControl {
 
     const currentFloor = elevator.currentFloor;
     // If the elevator is on the lobby floor the door takes 30 seconds to close otherwise 5
-    const doorClosingTime = currentFloor === 0 ? 30 : 5;
+    const doorClosingTime = currentFloor === 1 ? 30 : 5;
     // If the elevator is dropping off at the lobby the door takes 30 seconds to open otherwise 5
-    const doorOpeningTime = destinationFloor === 0 ? 30 : 5;
+    const doorOpeningTime = destinationFloor === 1 ? 30 : 5;
     const totalDoorTime = doorClosingTime + doorOpeningTime
     const timeInside = Math.abs(currentFloor - destinationFloor) + totalDoorTime;
     this.timeSpentInside += timeInside;

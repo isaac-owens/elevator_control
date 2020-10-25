@@ -41,4 +41,11 @@ describe('Simulator', function() {
     })
   })
   
+  describe('#run', function() {
+    it('exists as a function', function() {
+      expect(newSimulator.run()).to.exist;
+    });
+
+    it('')
+  })
 })
