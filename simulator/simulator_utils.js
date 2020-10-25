@@ -1,4 +1,5 @@
-const unirand = require('unirand');
+const seedrandom = require('seedrandom');
+seedrandom('hello.', {global: true});
 const Elevator = require('../elevator/elevator');
 const ElevatorControl = require('../elevator_control/elevator_control');
 
