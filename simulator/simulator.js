@@ -1,3 +1,6 @@
-const {generateNumPassengers, generateFloorCall} = require('./simulator_utils');
+const {
+  generateNumPassengers, 
+  generateFloorCall,
+  generateTimeSeries
+} = require('./simulator_utils');
 
-console.log(generateNumPassengers());

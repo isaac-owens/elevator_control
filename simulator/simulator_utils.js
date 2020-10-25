@@ -15,5 +15,21 @@ module.exports = {
     // Generates a random number from 1 - 100 min and max inclusive;
     const floorCall = Math.floor(Math.random() * (highestFloor - lowestFloor + 1) + lowestFloor);
     return floorCall;
+  },
+
+  generateTimeSeries: (numberOfCalls) => {
+    const timeSeries = {};
+
+    for (let i = 0; i < numberOfCalls; i++) {
+      const call = {};
+      let time;
+      call['time'] = Math.floor(Math.random() * );
+      call['numPassengers'] = module.exports.generateNumPassengers();
+      call['floor'] = module.exports.generateFloorCall();
+      call['destination'] = module.exports.generateFloorCall();
+      timeSeries[`call${i}`] = call;
+    }
+
+    return timeSeries;
   }
 }
