@@ -3,6 +3,7 @@ const expect = require('chai').expect;
 const ElevatorControl = require('../elevator_control/elevator_control');
 const Elevator = require('../elevator/elevator');
 const {clearElevator} = require('../elevator/elevator_utils');
+const {clearElevatorControl} = require('../elevator_control/elevator_control_utils');
 
 const newElevatorControl = new ElevatorControl();
 const elevatorOne = new Elevator();
@@ -34,6 +35,7 @@ describe('Elevator Control', function() {
     clearElevator(elevatorOne);
     clearElevator(elevatorTwo);
     clearElevator(elevatorThree);
+    clearElevatorControl(newElevatorControl);
   });
 
   it('can create a new ElevatorControl', function() {
@@ -89,6 +91,12 @@ describe('Elevator Control', function() {
       assert.throws(() => {newElevatorControl.calculateWaitTime(elevatorTwo, '42')}, TypeError);
     });
 
+    it('adds wait time to total wait time', function() {
+      elevatorTwo.moveToFloor(20);
+      const waitTime = newElevatorControl.calculateWaitTime(elevatorTwo, 10);
+      expect(newElevatorControl.timeSpentWaiting).to.equal(15);
+    })
+
     it('calculates wait time from call to pick up for given elevator', function() {
       elevatorTwo.moveToFloor(20);
       const waitTime = newElevatorControl.calculateWaitTime(elevatorTwo, 10);
@@ -112,6 +120,12 @@ describe('Elevator Control', function() {
     it('throws an error if the second argument is not a number', function() {
       assert.throws(() => {newElevatorControl.calculateTimeInside(elevatorTwo, '0')}, TypeError);
     });
+
+    it('adds time inside to total time inside', function() {
+      elevatorTwo.moveToFloor(10);
+      const timeInside = newElevatorControl.calculateTimeInside(elevatorTwo, 0);
+      expect(newElevatorControl.timeSpentInside).to.equal(45);
+    })
 
     it('calculates time inside elevator from pickup to departure', function() {
       elevatorTwo.moveToFloor(10);

@@ -7,5 +7,10 @@ module.exports = {
     } else if (typeof second === 'number' != true) {
       throw TypeError('Second argument must be a number');
     } 
+  },
+
+  clearElevatorControl: (elevatorControl) => {
+    elevatorControl.timeSpentWaiting = 0;
+    elevatorControl.timeSpentInside = 0;
   }
 }

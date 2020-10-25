@@ -28,6 +28,7 @@ class ElevatorControl {
     const doorOpeningTime = currentFloor === 0 ? 30 : 5;
     // The time it takes for the elevator to arrive to the call and open the doors
     const waitTime = Math.abs(currentFloor - destinationFloor) + doorOpeningTime;
+    this.timeSpentWaiting += waitTime;
     return waitTime;
   }
 
@@ -44,6 +45,7 @@ class ElevatorControl {
     const doorOpeningTime = destinationFloor === 0 ? 30 : 5;
     const totalDoorTime = doorClosingTime + doorOpeningTime
     const timeInside = Math.abs(currentFloor - destinationFloor) + totalDoorTime;
+    this.timeSpentInside += timeInside;
     return timeInside;
   }
   
@@ -62,7 +64,6 @@ class ElevatorControl {
         closestElevator = elevator;
       }
     }
-    closestElevator.moveToFloor(call.floor);
     return closestElevator;
   }
 }
