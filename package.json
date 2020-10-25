@@ -2,7 +2,6 @@
   "name": "elevator_control",
   "version": "1.0.0",
   "description": "Elevator control system simulator",
-  "main": "index.js",
   "scripts": {
     "test": "mocha",
     "start": "node simulator/simulator"
@@ -23,6 +22,8 @@
     "unirand": "^2.11.0"
   },
   "devDependencies": {
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "webpack": "^5.2.0",
+    "webpack-cli": "^4.1.0"
   }
 }
