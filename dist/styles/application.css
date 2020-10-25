@@ -1,14 +1,19 @@
 body { 
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
-button {
+h1 {
+  text-align: center;
   width: 100%;
+  background-color: grey;
+}
+
+button {
+  width: auto;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 30px;
   font-weight: 700;
   letter-spacing: 2px;
   line-height: 1;
@@ -38,4 +43,34 @@ button:hover {
 
 button:focus {
   outline: none;
+}
+
+ul {
+  font-size: 30px;
+  list-style: none;
+}
+
+li {
+  text-align: center;
+}
+
+p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+footer {
+  width: auto;
+  font-size: 22px;
+  font-style: italic;
+  background-color: grey;
+}
+.header-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
 }

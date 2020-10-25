@@ -7,6 +7,10 @@ class Simulator {
   const avgTimeWaiting = Math.round(elevatorControl.timeSpentWaiting / numberOfCalls);
   const avgTimeInside = Math.round(elevatorControl.timeSpentInside / numberOfCalls);
   const totalTime = Math.round(avgTimeWaiting + avgTimeInside / numberOfCalls);
+
+  const timeSummary = document.getElementById('time-summary');
+  const summary = document.createTextNode(` Avg Time Waiting: ${avgTimeWaiting} seconds | \n Avg Time Inside: ${avgTimeInside} seconds | \n Total Avg Time: ${totalTime} seconds`)
+  timeSummary.appendChild(summary);
     return(` Avg Time Waiting: ${avgTimeWaiting} seconds \n Avg Time Inside: ${avgTimeInside} seconds \n Total Avg Time: ${totalTime} seconds`);
   }
 
@@ -40,6 +44,8 @@ const simulatorButton = document.getElementById('simulator-button');
 simulatorButton.addEventListener('click', () => {
   const elevatorLog = document.getElementById('elevator-log');
   elevatorLog.innerHTML = '';
+  const timeSummary = document.getElementById('time-summary');
+  timeSummary.innerHTML = '';
   const newSimulator = new Simulator();
   newSimulator.run();
 });
