@@ -1,5 +1,6 @@
 const seedrandom = require('seedrandom');
-seedrandom('hello.', {global: true});
+// Seeds Math.random to be consistent;
+seedrandom('goodbye.', {global: true});
 const Elevator = require('../elevator/elevator');
 const ElevatorControl = require('../elevator_control/elevator_control');
 
