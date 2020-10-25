@@ -30,15 +30,22 @@ class Simulator {
       // Calculate the time data for the pickup
       elevatorControl.calculateWaitTime(closestElevator, currentCall.floor);
       elevatorControl.calculateTimeInside(closestElevator, currentCall.destination);
-      elevatorControl.sendToFloor(closestElevator, currentCall.floor);
-      elevatorControl.sendToFloor(closestElevator, currentCall.destination);
 
+      // Send to pickup floor and log
+      elevatorControl.sendToFloor(closestElevator, currentCall.floor);
       // Vanilla js to render the info to index.html
       const elevatorLog = document.getElementById('elevator-log')
-      const li = document.createElement("li");
+      const liOne = document.createElement("li");
       const liContent = document.createTextNode(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`)
-      li.appendChild(liContent);
-      elevatorLog.appendChild(li);
+      liOne.appendChild(liContent);
+      elevatorLog.appendChild(liOne);
+
+      // Send to destination floor and log
+      elevatorControl.sendToFloor(closestElevator, currentCall.destination);
+      const liTwo = document.createElement("li");
+      const liContent = document.createTextNode(`Elevator ${closestElevator.name} dropped off on floor ${currentCall.floor}`)
+      liTwo.appendChild(liContent);
+      elevatorLog.appendChild(liTwo);
 
       console.log(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`);
     }
