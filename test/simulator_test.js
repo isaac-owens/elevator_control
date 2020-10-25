@@ -35,10 +35,10 @@ describe('Simulator', function() {
       expect(newSimulator.generateElevatorControl()).to.exist;
     });
 
-    // it('creates a new ElevatorControl', function() {
-    //   const elevatorControl = newSimulator.generateElevatorControl();
-    //   expect(elevatorControl).to.be.an.instanceOf(ElevatorControl);
-    // })
+    it('creates a new ElevatorControl', function() {
+      const elevatorControl = newSimulator.generateElevatorControl();
+      expect(elevatorControl).to.be.an.instanceOf(ElevatorControl);
+    })
   })
   
 })
