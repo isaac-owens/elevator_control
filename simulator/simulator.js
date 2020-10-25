@@ -2,6 +2,10 @@ const {generateTimeSeries, generateElevators, generateElevatorControl} = require
 
 class Simulator {
 
+  printTimeSummary() {
+    return true;
+  }
+
   run() {
     const elevators = generateElevators();
     const elevatorControl = generateElevatorControl();
@@ -16,13 +20,11 @@ class Simulator {
       elevatorControl.calculateWaitTime(closestElevator, currentCall.floor);
       elevatorControl.calculateTimeInside(closestElevator, currentCall.floor);
       elevatorControl.sendToFloor(closestElevator, currentCall.floor);
-      console.log(`Elevator ${JSON.stringify(closestElevator)} picked up on floor ${currentCall.floor}`);
+      console.log(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`);
     }
     return 'Run Complete! Printing summary...';
   }
 }
 
-const simulator = new Simulator();
-console.log(simulator.run());
 
 module.exports = Simulator;
