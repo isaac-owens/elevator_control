@@ -106,7 +106,7 @@ describe('Elevator Control', function() {
 
   describe('#calculateTimeInside', function() {
     it('should exist as a function', function() {
-      expect(newElevatorControl.calculateTimeInside(elevatorTwo, 0)).to.exist;
+      expect(newElevatorControl.calculateTimeInside(elevatorTwo, 1)).to.exist;
     });
 
     it('throws an error if two arguments are not received', function() {
@@ -114,7 +114,7 @@ describe('Elevator Control', function() {
     });
 
     it('throws an error if the first argument is not Elevator instance', function() {
-      assert.throws(() => {newElevatorControl.calculateTimeInside('elevatorTwo', 0)}, TypeError);
+      assert.throws(() => {newElevatorControl.calculateTimeInside('elevatorTwo', 1)}, TypeError);
     });
 
     it('throws an error if the second argument is not a number', function() {
@@ -123,14 +123,14 @@ describe('Elevator Control', function() {
 
     it('adds time inside to total time inside', function() {
       elevatorTwo.moveToFloor(10);
-      const timeInside = newElevatorControl.calculateTimeInside(elevatorTwo, 0);
-      expect(newElevatorControl.timeSpentInside).to.equal(45);
+      const timeInside = newElevatorControl.calculateTimeInside(elevatorTwo, 1);
+      expect(newElevatorControl.timeSpentInside).to.equal(44);
     })
 
     it('calculates time inside elevator from pickup to departure', function() {
       elevatorTwo.moveToFloor(10);
-      const timeInside = newElevatorControl.calculateTimeInside(elevatorTwo, 0)
-      expect(timeInside).to.equal(45);
+      const timeInside = newElevatorControl.calculateTimeInside(elevatorTwo, 1)
+      expect(timeInside).to.equal(44);
     })
   })
 

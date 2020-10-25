@@ -11,41 +11,51 @@ describe('Simulator', function() {
     assert.ok(newSimulator);
   });
 
-  describe('#generateElevators', function() {
-    it('should exist as a function', function() {
-      expect(newSimulator.generateElevators()).to.exist;
-    });
+  // describe('#generateElevators', function() {
+  //   it('should exist as a function', function() {
+  //     expect(newSimulator.generateElevators()).to.exist;
+  //   });
 
-    it('should return an array', function() {
-      const elevators = newSimulator.generateElevators();
-      expect(typeof elevators === 'object').to.equal(true);
-    });
+  //   it('should return an array', function() {
+  //     const elevators = newSimulator.generateElevators();
+  //     expect(typeof elevators === 'object').to.equal(true);
+  //   });
 
-    it('should return an array of three Elevators', function() {
-      const elevators = newSimulator.generateElevators();
-      expect(elevators).to.have.lengthOf(3);
-      expect(elevators[0]).to.be.an.instanceOf(Elevator);
-      expect(elevators[1]).to.be.an.instanceOf(Elevator);
-      expect(elevators[2]).to.be.an.instanceOf(Elevator);
-    })
-  })
+  //   it('should return an array of three Elevators', function() {
+  //     const elevators = newSimulator.generateElevators();
+  //     expect(elevators).to.have.lengthOf(3);
+  //     expect(elevators[0]).to.be.an.instanceOf(Elevator);
+  //     expect(elevators[1]).to.be.an.instanceOf(Elevator);
+  //     expect(elevators[2]).to.be.an.instanceOf(Elevator);
+  //   })
+  // })
 
-  describe('#generateElevatorControl', function() {
-    it('exists as a function', function() {
-      expect(newSimulator.generateElevatorControl()).to.exist;
-    });
+  // describe('#generateElevatorControl', function() {
+  //   it('exists as a function', function() {
+  //     expect(newSimulator.generateElevatorControl()).to.exist;
+  //   });
 
-    it('creates a new ElevatorControl', function() {
-      const elevatorControl = newSimulator.generateElevatorControl();
-      expect(elevatorControl).to.be.an.instanceOf(ElevatorControl);
-    })
-  })
+  //   it('creates a new ElevatorControl', function() {
+  //     const elevatorControl = newSimulator.generateElevatorControl();
+  //     expect(elevatorControl).to.be.an.instanceOf(ElevatorControl);
+  //   })
+  // })
+
+  // describe('#printTimeSummary', function() {
+  //   it('prints a summary of time averages for run', function() {
+  //     const summary = newSimulator.printTimeSummary();
+  //     expect(summary).to.equal(`Avg Time Waiting: ${}`)
+  //   })
+  // })
   
   describe('#run', function() {
     it('exists as a function', function() {
       expect(newSimulator.run()).to.exist;
     });
 
-    it('')
+    it('returns a message that run is complete', function() {
+      const run = newSimulator.run();
+      expect(run).to.equal('Run Complete! Printing summary...')
+    })
   })
 })

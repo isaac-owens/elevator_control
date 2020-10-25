@@ -1,4 +1,6 @@
 const unirand = require('unirand');
+const Elevator = require('../elevator/elevator');
+const ElevatorControl = require('../elevator_control/elevator_control');
 
 module.exports = {
   generateNumPassengers: () => {
@@ -31,5 +33,18 @@ module.exports = {
     }
 
     return timeSeries;
+  },
+
+  generateElevators() {
+    const elevatorOne = new Elevator();
+    const elevatorTwo = new Elevator();
+    const elevatorThree = new Elevator();
+    const elevators = [elevatorOne, elevatorTwo, elevatorThree];
+    return elevators;
+  },
+
+  generateElevatorControl() {
+    const elevatorControl = new ElevatorControl();
+    return elevatorControl;
   }
 }
