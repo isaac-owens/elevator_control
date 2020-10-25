@@ -3,7 +3,7 @@ class Elevator {
     this.numberOfPassengers = 0;
     this.maxPassengers = 10;
     // Current floor of 0 is the lobby
-    this.currentFloor = 0;
+    this.currentFloor = 1;
   }
 
   loadPassengers(numPassengers) {
@@ -32,7 +32,7 @@ class Elevator {
       throw new Error('moveToFloor takes one argument');
     } else if (typeof arguments[0] != 'number') {
       throw TypeError('moveToFloor expects Number as paramater');
-    } else if (floor > 100) {
+    } else if (floor > 100 || floor < 1) {
       throw new Error('floor cannot exceed 100');
     }
 

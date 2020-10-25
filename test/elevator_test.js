@@ -14,8 +14,8 @@ describe('Elevator', function() {
     assert.ok(newElevator);
   });
 
-  it('should start on the Lobby floor (0)', function() {
-    expect(newElevator.currentFloor).to.equal(0);
+  it('should start on the Lobby floor (1)', function() {
+    expect(newElevator.currentFloor).to.equal(1);
   });
   
   it('should start with no passengers', function() {
@@ -91,6 +91,10 @@ describe('Elevator', function() {
     it('throws an error if the floor goes above 100', function() {
       assert.throws(() => {newElevator.moveToFloor(200), Error});
     });
+
+    it('throws an error if the floor goes below 1', function() {
+      assert.throws(() => {newElevator.moveToFloor(0), Error})
+    })
 
     it('updates elevator\'s current floor', function() {
       newElevator.moveToFloor(3);
