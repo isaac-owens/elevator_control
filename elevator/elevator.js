@@ -1,5 +1,6 @@
 class Elevator {
-  constructor() {
+  constructor(name) {
+    this.name = name;
     this.numberOfPassengers = 0;
     this.maxPassengers = 10;
     // Current floor of 0 is the lobby

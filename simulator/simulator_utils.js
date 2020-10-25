@@ -36,9 +36,9 @@ module.exports = {
   },
 
   generateElevators() {
-    const elevatorOne = new Elevator();
-    const elevatorTwo = new Elevator();
-    const elevatorThree = new Elevator();
+    const elevatorOne = new Elevator('One');
+    const elevatorTwo = new Elevator('Two');
+    const elevatorThree = new Elevator('Three');
     const elevators = [elevatorOne, elevatorTwo, elevatorThree];
     return elevators;
   },

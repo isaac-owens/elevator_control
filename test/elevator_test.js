@@ -2,7 +2,7 @@ const assert = require('assert');
 const expect = require('chai').expect;
 
 const Elevator = require('../elevator/elevator');
-const newElevator = new Elevator();
+const newElevator = new Elevator('One');
 const {clearElevator} = require('../elevator/elevator_utils');
 
 describe('Elevator', function() {
@@ -13,6 +13,10 @@ describe('Elevator', function() {
   it('can create a new Elevator', function() {
     assert.ok(newElevator);
   });
+
+  it('should initialize with a name', function() {
+    expect(newElevator.name).to.equal('One');
+  })
 
   it('should start on the Lobby floor (1)', function() {
     expect(newElevator.currentFloor).to.equal(1);

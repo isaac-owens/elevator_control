@@ -6,9 +6,9 @@ const {clearElevator} = require('../elevator/elevator_utils');
 const {clearElevatorControl} = require('../elevator_control/elevator_control_utils');
 
 const newElevatorControl = new ElevatorControl();
-const elevatorOne = new Elevator();
-const elevatorTwo = new Elevator();
-const elevatorThree = new Elevator();
+const elevatorOne = new Elevator('One');
+const elevatorTwo = new Elevator('Two');
+const elevatorThree = new Elevator('Three');
 const timeSeries = {
   'call0': {
     time: 0,
