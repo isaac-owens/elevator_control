@@ -20,6 +20,7 @@ module.exports = {
   generateTimeSeries: (numberOfCalls) => {
     const timeSeries = {};
 
+    // Creates a time series of subsequent calls given number of calls to create
     for (let i = 0; i < numberOfCalls; i++) {
       const call = {};
       let time;

@@ -46,6 +46,13 @@ class ElevatorControl {
     const timeInside = Math.abs(currentFloor - destinationFloor) + totalDoorTime;
     return timeInside;
   }
+  
+  dispatchElevator(call) {
+    if(typeof call != 'object') {
+      throw TypeError('Argument must be an object');
+    }
+    return true;
+  }
 }
 
 module.exports = ElevatorControl;

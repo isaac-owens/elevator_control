@@ -8,6 +8,7 @@ const newElevatorControl = new ElevatorControl();
 const elevatorOne = new Elevator();
 const elevatorTwo = new Elevator();
 const elevatorThree = new Elevator();
+const timeSeries = {'call0': {}, 'call1': {}, 'call2': {}};
 
 describe('Elevator Control', function() {
   afterEach(function() {
@@ -97,6 +98,16 @@ describe('Elevator Control', function() {
       elevatorTwo.moveToFloor(10);
       const timeInside = newElevatorControl.calculateTimeInside(elevatorTwo, 0)
       expect(timeInside).to.equal(45);
+    })
+  })
+
+  describe('#dispatchElevator', function() {
+    it('should exist as a function', function() {
+      expect(newElevatorControl.dispatchElevator(timeSeries['call1'])).to.exist;
+    });
+
+    it('should take an object as an argument', function() {
+      assert.throws(() => {newElevatorControl.dispatchElevator()}, TypeError);
     })
   })
 });
