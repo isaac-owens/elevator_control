@@ -30,9 +30,9 @@ class Simulator {
   }
 }
 
-const simulator = new Simulator();
 const simulatorButton = document.getElementById('simulator-button');
 simulatorButton.addEventListener('click', () => {
+  const simulator = new Simulator();
   simulator.run();
 });
 
