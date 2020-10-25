@@ -2,6 +2,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 50vh;
 }
 
 button {
@@ -29,4 +30,12 @@ button {
   padding: 17px 48px;
   margin: 0 auto;
   margin-bottom: 18px;
+}
+
+button:hover {
+  background-color: #3a61b3;
+}
+
+button:focus {
+  outline: none;
 }
