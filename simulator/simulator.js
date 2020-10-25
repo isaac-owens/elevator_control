@@ -2,8 +2,12 @@ const {generateTimeSeries, generateElevators, generateElevatorControl} = require
 
 class Simulator {
 
-  printTimeSummary() {
-    return true;
+  printTimeSummary(elevatorControl, timeSeries) {
+  const numberOfCalls = Object.keys(timeSeries).length;
+  const avgTimeWaiting = Math.round(elevatorControl.timeSpentWaiting / numberOfCalls);
+  const avgTimeInside = Math.round(elevatorControl.timeSpentInside / numberOfCalls);
+  const totalTime = Math.round(avgTimeWaiting + avgTimeInside / numberOfCalls);
+    return(` Avg Time Waiting: ${avgTimeWaiting} seconds \n Avg Time Inside: ${avgTimeInside} seconds \n Total Avg Time: ${totalTime} seconds`);
   }
 
   run() {
@@ -11,7 +15,6 @@ class Simulator {
     const elevatorControl = generateElevatorControl();
     const numberOfCalls = Math.floor(Math.random() * (10 - 1) + 10);
     const timeSeries = generateTimeSeries(numberOfCalls);
-    console.log(timeSeries);
 
     let call;
     for (call in timeSeries) {
@@ -22,9 +25,14 @@ class Simulator {
       elevatorControl.sendToFloor(closestElevator, currentCall.floor);
       console.log(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`);
     }
-    return 'Run Complete! Printing summary...';
+    console.log('Run Complete! Printing summary...');
+    return this.printTimeSummary(elevatorControl, timeSeries);
   }
 }
+
+const simulator = new Simulator();
+const run = simulator.run();
+console.log(run);
 
 
 module.exports = Simulator;

@@ -15,11 +15,6 @@ describe('Simulator', function() {
     it('should exist as a function', function() {
       expect(newSimulator.printTimeSummary()).to.exist;
     })
-
-    // it('prints average time summary from run', function() {
-    //   const summary = newSimulator.printTimeSummary();
-    //   expect(summary).to.equal('Avg Time Waiting: ')
-    // })
   })
   
   describe('#run', function() {
