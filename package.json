@@ -4,7 +4,8 @@
   "description": "Elevator control system simulator",
   "scripts": {
     "test": "mocha",
-    "start": "node simulator/simulator"
+    "start": "node simulator/simulator",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
