@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/isaac-owens/elevator_control#readme",
   "dependencies": {
+    "@babel/core": "^7.12.3",
+    "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
     "mocha": "^8.2.0",
     "seedrandom": "^3.0.5",
     "unirand": "^2.11.0"
