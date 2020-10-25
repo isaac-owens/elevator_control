@@ -36,15 +36,15 @@ class Simulator {
       // Vanilla js to render the info to index.html
       const elevatorLog = document.getElementById('elevator-log')
       const liOne = document.createElement("li");
-      const liContent = document.createTextNode(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`)
-      liOne.appendChild(liContent);
+      const liOneContent = document.createTextNode(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`)
+      liOne.appendChild(liOneContent);
       elevatorLog.appendChild(liOne);
 
       // Send to destination floor and log
       elevatorControl.sendToFloor(closestElevator, currentCall.destination);
       const liTwo = document.createElement("li");
-      const liContent = document.createTextNode(`Elevator ${closestElevator.name} dropped off on floor ${currentCall.floor}`)
-      liTwo.appendChild(liContent);
+      const liTwoContent = document.createTextNode(`Elevator ${closestElevator.name} dropped off on floor ${currentCall.destination}`)
+      liTwo.appendChild(liTwoContent);
       elevatorLog.appendChild(liTwo);
 
       console.log(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`);
