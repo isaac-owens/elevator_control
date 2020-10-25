@@ -1,6 +1,7 @@
 const assert = require('assert');
 const expect = require('chai').expect;
 const Elevator = require('../elevator/elevator');
+const ElevatorControl = require('../elevator_control/elevator_control');
 const Simulator = require('../simulator/simulator');
 
 const newSimulator = new Simulator();
@@ -27,6 +28,17 @@ describe('Simulator', function() {
       expect(elevators[1]).to.be.an.instanceOf(Elevator);
       expect(elevators[2]).to.be.an.instanceOf(Elevator);
     })
+  })
+
+  describe('#generateElevatorControl', function() {
+    it('exists as a function', function() {
+      expect(newSimulator.generateElevatorControl()).to.exist;
+    });
+
+    // it('creates a new ElevatorControl', function() {
+    //   const elevatorControl = newSimulator.generateElevatorControl();
+    //   expect(elevatorControl).to.be.an.instanceOf(ElevatorControl);
+    // })
   })
   
 })
