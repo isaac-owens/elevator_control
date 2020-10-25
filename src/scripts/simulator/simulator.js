@@ -23,6 +23,11 @@ class Simulator {
       elevatorControl.calculateWaitTime(closestElevator, currentCall.floor);
       elevatorControl.calculateTimeInside(closestElevator, currentCall.floor);
       elevatorControl.sendToFloor(closestElevator, currentCall.floor);
+      const elevatorLog = document.getElementById('elevator-log')
+      const li = document.createElement("li");
+      const liContent = document.createTextNode(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`)
+      li.appendChild(liContent);
+      elevatorLog.appendChild(li);
       console.log(`Elevator ${closestElevator.name} picked up on floor ${currentCall.floor}`);
     }
     console.log('Run Complete! Printing summary...');
@@ -33,6 +38,8 @@ class Simulator {
 const simulatorButton = document.getElementById('simulator-button');
 
 simulatorButton.addEventListener('click', () => {
+  const elevatorLog = document.getElementById('elevator-log');
+  elevatorLog.innerHTML = '';
   const newSimulator = new Simulator();
   newSimulator.run();
 });
