@@ -30,9 +30,10 @@ class Simulator {
   }
 }
 
-const simulator = new Simulator();
-const run = simulator.run();
-console.log(run);
+const simulatorButton = document.getElementById('simulator-button');
+simulatorButton.addEventListener('click', () => {
+  simulator.run();
+});
 
 
 module.exports = Simulator;
