@@ -47,11 +47,23 @@ class ElevatorControl {
     return timeInside;
   }
   
-  dispatchElevator(call) {
-    if(typeof call != 'object') {
-      throw TypeError('Argument must be an object');
+  dispatchElevator(call, elevators) {
+    if (typeof call != 'object') {
+      throw TypeError('First argument must be an object');
+    } else if (typeof elevators != 'object') {
+      throw TypeError('Second argument must be an array');
     }
-    return true;
+
+    let closestElevator = elevators[0];
+
+    for(let i = 0; i < elevators.length; i++) {
+      const elevator = elevators[i]
+      if (Math.abs(elevator.currentFloor - call.floor) < Math.abs(closestElevator.currentFloor - call.floor)) {
+        closestElevator = elevator;
+      }
+    }
+    closestElevator.moveToFloor(call.floor);
+    return closestElevator;
   }
 }
 

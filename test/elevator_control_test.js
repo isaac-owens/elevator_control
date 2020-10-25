@@ -10,22 +10,22 @@ const elevatorTwo = new Elevator();
 const elevatorThree = new Elevator();
 const timeSeries = {
   'call0': {
-    'time': 0,
-    'numPassengers': 2,
-    'floor': 10,
-    'destination': 42
+    time: 0,
+    numPassengers: 2,
+    floor: 10,
+    destination: 42
   }, 
   'call1': {
-    'time': 1,
-    'numPassengers': 1,
-    'floor': 69,
-    'destination': 1
+    time: 1,
+    numPassengers: 1,
+    floor: 69,
+    destination: 1
   }, 
   'call2': {
-    'time': 2,
-    'numPassengers': 4,
-    'floor': 1,
-    'destination': 100
+    time: 2,
+    numPassengers: 4,
+    floor: 1,
+    destination: 100
   }
 };
 
@@ -121,16 +121,26 @@ describe('Elevator Control', function() {
   })
 
   describe('#dispatchElevator', function() {
+    const elevators = [elevatorOne, elevatorTwo, elevatorThree];
+
     it('exists as a function', function() {
-      expect(newElevatorControl.dispatchElevator(timeSeries['call1'])).to.exist;
+      expect(newElevatorControl.dispatchElevator(timeSeries['call1'], elevators)).to.exist;
     });
 
-    it('takes an object as an argument', function() {
-      assert.throws(() => {newElevatorControl.dispatchElevator()}, TypeError);
+    it('takes an object as it\'s first argument', function() {
+      assert.throws(() => {newElevatorControl.dispatchElevator('call1', 'elevators')}, TypeError);
     });
+
+    it('takes an array of elevator instances as it\'s second argument', function() {
+      assert.throws(() => {newElevatorControl.dispatchElevator(timeSeries['call1'], 'elevators')}, TypeError)
+    })
 
     it('calls the closest elevator to the call floor', function() {
-
+      elevatorOne.moveToFloor(50);
+      elevatorTwo.moveToFloor(16);
+      elevatorThree.moveToFloor(15);
+      const dispatchedElevator = newElevatorControl.dispatchElevator(timeSeries['call0'], elevators);
+      expect(dispatchedElevator).to.equal(elevatorThree);
     })
   })
 });

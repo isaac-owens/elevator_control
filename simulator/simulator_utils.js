@@ -23,11 +23,10 @@ module.exports = {
     // Creates a time series of subsequent calls given number of calls to create
     for (let i = 0; i < numberOfCalls; i++) {
       const call = {};
-      let time;
-      call['time'] = i;
-      call['numPassengers'] = module.exports.generateNumPassengers();
-      call['floor'] = module.exports.generateFloorCall();
-      call['destination'] = module.exports.generateFloorCall();
+      call.time = i;
+      call.numPassengers = module.exports.generateNumPassengers();
+      call.floor = module.exports.generateFloorCall();
+      call.destination = module.exports.generateFloorCall();
       timeSeries[`call${i}`] = call;
     }
 
